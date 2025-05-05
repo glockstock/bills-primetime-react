@@ -1,0 +1,29 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  background-color: #00274e; /* Darker Bills blue */
+  padding: 0 16px;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+}
+
+.nav-icon {
+  font-size: 22px;
+}
+
+.menu-icon {
+  font-size: 28px;
+} 

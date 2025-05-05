@@ -1,0 +1,51 @@
+.request-list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  flex: 1;
+  overflow: hidden;
+}
+
+.request-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+}
+
+.request-list-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: #00274e; /* Darker Bills blue */
+}
+
+.request-list-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.map-icon, .list-icon {
+  font-size: 18px;
+}
+
+.request-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex: 1;
+} 
