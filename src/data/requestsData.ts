@@ -5,6 +5,7 @@ export interface Request {
   time: string;
   priority: number;
   assigned: boolean;
+  assignedToMe?: boolean;
 }
 
 export const requests: Request[] = [
@@ -14,7 +15,8 @@ export const requests: Request[] = [
     location: "LEVEL 1 - S112",
     time: "7:16 PM",
     priority: 0,
-    assigned: false
+    assigned: false,
+    assignedToMe: false
   },
   {
     id: 2,
@@ -22,7 +24,8 @@ export const requests: Request[] = [
     location: "CONC B - CONCESSIONS",
     time: "7:02 PM",
     priority: 2,
-    assigned: false
+    assigned: false,
+    assignedToMe: false
   },
   {
     id: 3,
@@ -30,7 +33,8 @@ export const requests: Request[] = [
     location: "LEVEL 2 - S236",
     time: "6:51 PM",
     priority: 1,
-    assigned: false
+    assigned: false,
+    assignedToMe: false
   },
   {
     id: 4,
@@ -38,7 +42,8 @@ export const requests: Request[] = [
     location: "LEVEL 1 - S112",
     time: "7:16 PM",
     priority: 0,
-    assigned: true
+    assigned: true,
+    assignedToMe: true
   },
   {
     id: 5,
@@ -46,7 +51,8 @@ export const requests: Request[] = [
     location: "CONC B - CONCESSIONS",
     time: "7:02 PM",
     priority: 2,
-    assigned: true
+    assigned: true,
+    assignedToMe: false
   },
   {
     id: 6,
@@ -54,7 +60,8 @@ export const requests: Request[] = [
     location: "LEVEL 2 - S236",
     time: "6:51 PM",
     priority: 1,
-    assigned: true
+    assigned: true,
+    assignedToMe: false
   },
   {
     id: 7,
@@ -62,6 +69,7 @@ export const requests: Request[] = [
     location: "LEVEL 3 - S311",
     time: "6:42 PM",
     priority: 2,
-    assigned: true
+    assigned: true,
+    assignedToMe: false
   }
 ]; 
