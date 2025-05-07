@@ -1,24 +1,55 @@
 .header {
-  background-color: #c60c30; /* Buffalo Bills red */
-  padding: 16px;
+  background-color: #00338D; /* Dark blue color from the mockup */
+  padding: 8px 16px;
   display: flex; 
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: white;
+  justify-content: space-between;
+  height: 80px;
+  position: relative; /* Added for absolute positioned children */
 }
 
-.logo {
+.header-left {
+  display: flex;
+  align-items: center;
+  width: 40px; /* Fixed width to balance the header */
+  z-index: 1; /* Ensure icons appear above the logo */
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  width: 40px; /* Fixed width to balance the header */
+  z-index: 1; /* Ensure icons appear above the logo */
+}
+
+.primetime-logo {
+  max-height: 85px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.menu-icon, .settings-icon {
+  color: white;
+  font-size: 34px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.menu-icon {
   width: 40px;
   height: 40px;
-  object-fit: contain;
-  background-color: white;
-  border-radius: 4px;
-  padding: 2px;
 }
 
-.app-title {
-  font-size: 32px;
-  font-weight: 600;
-  margin: 0;
-} 
+.settings-icon {
+  width: 26px;
+  height: 26px;
+}

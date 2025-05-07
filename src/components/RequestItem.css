@@ -1,9 +1,45 @@
 .request-item {
-  padding: 16px;
-  border-bottom: 1px solid #e0e0e0;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
   background-color: white;
+}
+
+.request-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.request-description {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.request-location {
+  font-size: 14px;
+  color: #666;
+}
+
+.request-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.request-time {
+  font-size: 14px;
+  color: #333;
+}
+
+.request-priority {
+  font-size: 14px;
+  color: #666;
 }
 
 .request-info {
@@ -25,32 +61,6 @@
 }
 
 .ticket-icon, .bills-icon {
-  font-size: 14px;
-}
-
-.request-description {
-  margin: 0;
-  color: #333;
-  font-size: 14px;
-}
-
-.request-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-}
-
-.request-time {
-  font-size: 14px;
-  color: #666;
-}
-
-.request-location {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #666;
   font-size: 14px;
 }
 

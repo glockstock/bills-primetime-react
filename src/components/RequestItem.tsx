@@ -9,20 +9,13 @@ interface RequestItemProps {
 const RequestItem: FC<RequestItemProps> = ({ request }) => {
   return (
     <div className="request-item">
-      <div className="request-info">
-        <div className="request-name-row">
-          <span className="request-name">{request.name}</span>
-          {request.hasTicket && <span className="ticket-icon">🎟️</span>}
-          {request.hasBillsIcon && <span className="bills-icon">🏈</span>}
-        </div>
-        <p className="request-description">{request.description}</p>
+      <div className="request-main-content">
+        <div className="request-description">{request.description}</div>
+        <div className="request-location">{request.location}</div>
       </div>
       <div className="request-meta">
-        <span className="request-time">{request.time}</span>
-        <div className="request-location">
-          <span className="location-icon">📍</span>
-          <span>{request.location}</span>
-        </div>
+        <div className="request-time">{request.time}</div>
+        <div className="request-priority">Pri. {request.priority}</div>
       </div>
     </div>
   );

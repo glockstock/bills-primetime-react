@@ -4,23 +4,29 @@ import RequestItem from './RequestItem';
 import './RequestList.css';
 
 const RequestList: FC = () => {
+  const unassignedRequests = requests.filter(request => !request.assigned);
+  const assignedRequests = requests.filter(request => request.assigned);
+
   return (
     <div className="request-list-container">
-      <div className="request-list-header">
-        <h2 className="request-list-title">Requests</h2>
-        <div className="request-list-actions">
-          <button className="icon-button map-button">
-            <span className="map-icon">📍</span>
-          </button>
-          <button className="icon-button list-button">
-            <span className="list-icon">📋</span>
-          </button>
+      <h2 className="page-title">Requests</h2>
+      
+      <div className="request-section">
+        <h3 className="section-title">Unassigned ({unassignedRequests.length})</h3>
+        <div className="request-list">
+          {unassignedRequests.map((request) => (
+            <RequestItem key={request.id} request={request} />
+          ))}
         </div>
       </div>
-      <div className="request-list">
-        {requests.map((request) => (
-          <RequestItem key={request.id} request={request} />
-        ))}
+
+      <div className="request-section">
+        <h3 className="section-title">Assigned ({assignedRequests.length})</h3>
+        <div className="request-list">
+          {assignedRequests.map((request) => (
+            <RequestItem key={request.id} request={request} />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,64 +1,67 @@
 export interface Request {
   id: number;
-  name: string;
-  isAnonymous: boolean;
   description: string;
   location: string;
   time: string;
-  hasTicket?: boolean;
-  hasBillsIcon?: boolean;
+  priority: number;
+  assigned: boolean;
 }
 
 export const requests: Request[] = [
   {
     id: 1,
-    name: "Anonymous",
-    isAnonymous: true,
-    description: "Spilled drink near stairs",
-    location: "L3-310",
+    description: "Spill near stairs",
+    location: "LEVEL 1 - S112",
     time: "7:16 PM",
+    priority: 0,
+    assigned: false
   },
   {
     id: 2,
-    name: "Mark R.",
-    isAnonymous: false,
-    description: "Broken seat",
-    location: "L1-112",
+    description: "Trash overflowing",
+    location: "CONC B - CONCESSIONS",
     time: "7:02 PM",
-    hasTicket: true,
+    priority: 2,
+    assigned: false
   },
   {
     id: 3,
-    name: "Lisa M.",
-    isAnonymous: false,
-    description: "No paper towels in restroom",
-    location: "CL-223",
-    time: "7:00 PM",
-    hasTicket: true,
+    description: "Broken Seat",
+    location: "LEVEL 2 - S236",
+    time: "6:51 PM",
+    priority: 1,
+    assigned: false
   },
   {
     id: 4,
-    name: "Anonymous",
-    isAnonymous: true,
-    description: "Food on floor",
-    location: "L1-130",
-    time: "6:53 PM",
+    description: "Spill near stairs",
+    location: "LEVEL 1 - S112",
+    time: "7:16 PM",
+    priority: 0,
+    assigned: true
   },
   {
     id: 5,
-    name: "John P.",
-    isAnonymous: false,
     description: "Trash overflowing",
-    location: "CC-110",
-    time: "6:42 PM",
-    hasBillsIcon: true,
+    location: "CONC B - CONCESSIONS",
+    time: "7:02 PM",
+    priority: 2,
+    assigned: true
   },
   {
     id: 6,
-    name: "Anonymous",
-    isAnonymous: true,
-    description: "Spilled drink",
-    location: "L3-353",
-    time: "6:53 PM",
+    description: "Broken Seat",
+    location: "LEVEL 2 - S236",
+    time: "6:51 PM",
+    priority: 1,
+    assigned: true
   },
+  {
+    id: 7,
+    description: "Food on floor",
+    location: "LEVEL 3 - S311",
+    time: "6:42 PM",
+    priority: 2,
+    assigned: true
+  }
 ]; 
