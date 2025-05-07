@@ -63,6 +63,12 @@
   border-radius: 3px;
   overflow: hidden;
   box-shadow: none;
+  border-bottom: none;
+}
+
+/* Add border between items in "Assigned to me" section */
+.assigned-to-me .request-item:not(:last-child) {
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .request-list-header {
