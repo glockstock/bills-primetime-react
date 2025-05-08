@@ -1,6 +1,9 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo {
@@ -41,7 +44,7 @@
 
 .app {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;

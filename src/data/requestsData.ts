@@ -37,6 +37,24 @@ export const requests: Request[] = [
     assignedToMe: false
   },
   {
+    id: 9,
+    description: "Light not working",
+    location: "LEVEL 3 - S401",
+    time: "6:48 PM",
+    priority: 1,
+    assigned: false,
+    assignedToMe: false
+  },
+  {
+    id: 10,
+    description: "Missing cup holder",
+    location: "LEVEL 1 - S120",
+    time: "6:45 PM",
+    priority: 2,
+    assigned: false,
+    assignedToMe: false
+  },
+  {
     id: 4,
     description: "Spill near stairs",
     location: "LEVEL 1 - S112",
@@ -51,6 +69,15 @@ export const requests: Request[] = [
     location: "LEVEL 3 - S311",
     time: "6:42 PM",
     priority: 2,
+    assigned: true,
+    assignedToMe: true
+  },
+  {
+    id: 11,
+    description: "Broken rail",
+    location: "LEVEL 2 - S218",
+    time: "6:39 PM",
+    priority: 0,
     assigned: true,
     assignedToMe: true
   },
@@ -77,6 +104,24 @@ export const requests: Request[] = [
     description: "Food on floor",
     location: "LEVEL 3 - S311",
     time: "6:42 PM",
+    priority: 2,
+    assigned: true,
+    assignedToMe: false
+  },
+  {
+    id: 12,
+    description: "Wet floor sign needed",
+    location: "LEVEL 1 - ENTRANCE",
+    time: "6:35 PM",
+    priority: 1,
+    assigned: true,
+    assignedToMe: false
+  },
+  {
+    id: 13,
+    description: "Spilled drink",
+    location: "CONC A - CONCESSIONS",
+    time: "6:30 PM",
     priority: 2,
     assigned: true,
     assignedToMe: false
