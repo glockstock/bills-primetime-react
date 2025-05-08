@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useState } from 'react';
 import type { Request } from '../data/requestsData';
 import './RequestItem.css';
 
@@ -7,6 +8,8 @@ interface RequestItemProps {
 }
 
 const RequestItem: FC<RequestItemProps> = ({ request }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   // Get priority class based on the priority level
   const getPriorityClass = () => {
     switch (request.priority) {
@@ -20,11 +23,20 @@ const RequestItem: FC<RequestItemProps> = ({ request }) => {
     }
   };
 
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <div className="request-item">
+    <div className={`request-item ${isExpanded ? 'expanded' : ''}`} onClick={toggleExpanded}>
       <div className="request-main-content">
         <div className="request-title">{request.title}</div>
         <div className="request-location">{request.location}</div>
+        {isExpanded && (
+          <div className="request-description">
+            {request.description}
+          </div>
+        )}
       </div>
       <div className="request-meta">
         <div className="request-time">{request.time}</div>
