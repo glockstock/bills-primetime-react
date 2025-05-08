@@ -40,6 +40,25 @@
 .request-priority {
   font-size: 14px;
   color: #666;
+  padding: 3px 8px;
+  border-radius: 12px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.priority-low {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+
+.priority-medium {
+  background-color: #fff8e1;
+  color: #ffa000;
+}
+
+.priority-high {
+  background-color: #ffebee;
+  color: #d32f2f;
 }
 
 .request-info {
