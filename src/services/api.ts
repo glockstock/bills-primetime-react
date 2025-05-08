@@ -5,6 +5,7 @@ const API_BASE_URL = 'https://primetimeai-service-297759956270.us-central1.run.a
 
 export interface ApiRequest {
   id: string;
+  title: string;
   description: string;
   location: string;
   status: string;
@@ -20,6 +21,7 @@ export const transformApiRequest = (apiRequest: ApiRequest): Request => {
   
   return {
     id: parseInt(apiRequest.id, 10) || Math.floor(Math.random() * 1000), // Fallback for invalid IDs
+    title: apiRequest.title || 'Untitled Request',
     description: apiRequest.description || 'No description provided',
     location: apiRequest.location || 'Unknown location',
     time: apiRequest.created_at ? 

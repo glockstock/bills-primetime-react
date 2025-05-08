@@ -1,5 +1,6 @@
 export interface Request {
   id: number;
+  title: string;
   description: string;
   location: string;
   time: string;
@@ -12,7 +13,8 @@ export interface Request {
 export const fallbackRequests: Request[] = [
   {
     id: 1,
-    description: "Spill near stairs",
+    title: "Spill near stairs",
+    description: "There is a spill near the stairs creating a hazard.",
     location: "LEVEL 1 - S112",
     time: "7:16 PM",
     priority: 0,
@@ -21,7 +23,8 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 2,
-    description: "Trash overflowing",
+    title: "Trash overflowing",
+    description: "Trash can is overflowing and needs immediate attention.",
     location: "CONC B - CONCESSIONS",
     time: "7:02 PM",
     priority: 2,
@@ -30,7 +33,8 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 3,
-    description: "Broken Seat",
+    title: "Broken Seat",
+    description: "Seat is broken and needs repair.",
     location: "LEVEL 2 - S236",
     time: "6:51 PM",
     priority: 1,
@@ -39,7 +43,8 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 4,
-    description: "Spill near stairs",
+    title: "Spill near stairs",
+    description: "There is a spill near the stairs creating a hazard.",
     location: "LEVEL 1 - S112",
     time: "7:16 PM",
     priority: 0,
@@ -48,7 +53,8 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 5,
-    description: "Food on floor",
+    title: "Food on floor",
+    description: "Food spilled on floor needs to be cleaned up.",
     location: "LEVEL 3 - S311",
     time: "6:42 PM",
     priority: 2,
@@ -57,7 +63,8 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 6,
-    description: "Broken Seat",
+    title: "Broken Seat",
+    description: "Seat is broken and needs repair.",
     location: "LEVEL 2 - S236",
     time: "6:51 PM",
     priority: 1,
