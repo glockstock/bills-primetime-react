@@ -9,15 +9,20 @@ export interface ApiRequest {
   description: string;
   location: string;
   status: string;
-  priority: number;
+  priority: string | number;
   created_at: string;
   assigned_to?: string;
 }
 
 // Transform API response to match our frontend model
 export const transformApiRequest = (apiRequest: ApiRequest): Request => {
-  // Default priority to 0 if not provided by API
-  const priority = typeof apiRequest.priority === 'number' ? apiRequest.priority : 0;
+  // Parse priority from string or use number directly, default to 0 if invalid
+  const priorityValue = typeof apiRequest.priority === 'string' 
+    ? parseInt(apiRequest.priority, 10) 
+    : apiRequest.priority;
+  
+  // Use parsed value or default to 0 if NaN
+  const priority = isNaN(priorityValue as number) ? 0 : priorityValue as number;
   
   return {
     id: parseInt(apiRequest.id, 10) || Math.floor(Math.random() * 1000), // Fallback for invalid IDs
