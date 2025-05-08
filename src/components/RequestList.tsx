@@ -41,6 +41,12 @@ const RequestList: FC = () => {
     loadRequests();
   }, []);
 
+  // Handle the deletion of a request
+  const handleRequestDelete = (id: number) => {
+    // Update state to remove the deleted request
+    setRequests(prevRequests => prevRequests.filter(request => request.id !== id));
+  };
+
   const assignedToMeRequests = requests.filter(request => request.assignedToMe);
   const unassignedRequests = requests.filter(request => !request.assigned);
   const assignedRequests = requests.filter(request => request.assigned && !request.assignedToMe);
@@ -72,7 +78,11 @@ const RequestList: FC = () => {
               {assignedToMeRequests.length > 0 ? (
                 <div className="assigned-to-me">
                   {assignedToMeRequests.map((request) => (
-                    <RequestItem key={request.id} request={request} />
+                    <RequestItem 
+                      key={request.id} 
+                      request={request} 
+                      onDelete={handleRequestDelete}
+                    />
                   ))}
                 </div>
               ) : (
@@ -85,7 +95,11 @@ const RequestList: FC = () => {
               {unassignedRequests.length > 0 ? (
                 <div className="request-list">
                   {unassignedRequests.map((request) => (
-                    <RequestItem key={request.id} request={request} />
+                    <RequestItem 
+                      key={request.id} 
+                      request={request} 
+                      onDelete={handleRequestDelete}
+                    />
                   ))}
                 </div>
               ) : (
@@ -98,7 +112,11 @@ const RequestList: FC = () => {
               {assignedRequests.length > 0 ? (
                 <div className="request-list">
                   {assignedRequests.map((request) => (
-                    <RequestItem key={request.id} request={request} />
+                    <RequestItem 
+                      key={request.id} 
+                      request={request} 
+                      onDelete={handleRequestDelete}
+                    />
                   ))}
                 </div>
               ) : (

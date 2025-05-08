@@ -26,6 +26,7 @@ export const transformApiRequest = (apiRequest: ApiRequest): Request => {
   
   return {
     id: parseInt(apiRequest.id, 10) || Math.floor(Math.random() * 1000), // Fallback for invalid IDs
+    originalId: apiRequest.id, // Store the original string ID for API operations
     title: apiRequest.title || 'Untitled Request',
     description: apiRequest.description || 'No description provided',
     location: apiRequest.location || 'Unknown location',
@@ -71,5 +72,44 @@ export const fetchAllRequests = async (): Promise<Request[]> => {
     console.error('Error fetching requests:', error);
     console.log('Using fallback data instead');
     return fallbackRequests;
+  }
+};
+
+export const deleteRequest = async (id: string): Promise<boolean> => {
+  try {
+    // Make sure the ID is properly formatted as expected by the API
+    // The API expects the ID in the exact format it was returned from the server
+    console.log('Attempting to delete request with ID:', id);
+    
+    const response = await fetch(`${API_BASE_URL}/request/delete`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id })
+    });
+    
+    // Log the response status for debugging
+    console.log('Delete request response status:', response.status);
+    
+    if (!response.ok) {
+      // Try to get more detailed error information from the response
+      let errorDetails = '';
+      try {
+        const errorResponse = await response.json();
+        errorDetails = JSON.stringify(errorResponse);
+      } catch (e) {
+        // If we can't parse the error response, just continue
+      }
+      
+      console.warn(`API returned status code: ${response.status}`, errorDetails ? `Details: ${errorDetails}` : '');
+      throw new Error(`API error: ${response.status}`);
+    }
+    
+    return true;
+  } catch (error) {
+    console.error('Error deleting request:', error);
+    return false;
   }
 }; 
