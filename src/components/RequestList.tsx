@@ -10,9 +10,9 @@ const RequestList: FC = () => {
 
   return (
     <div className="request-list-container">
-      <h2 className="page-title">Requests</h2>
-      
       <div className="request-content">
+        <h2 className="page-title">Requests</h2>
+        
         <div className="request-section">
           <h3 className="section-title">Assigned to me ({assignedToMeRequests.length})</h3>
           <div className="assigned-to-me">
