@@ -7,6 +7,19 @@ interface RequestItemProps {
 }
 
 const RequestItem: FC<RequestItemProps> = ({ request }) => {
+  // Get priority class based on the priority level
+  const getPriorityClass = () => {
+    switch (request.priority) {
+      case 0:
+        return 'priority-low';
+      case 1:
+        return 'priority-medium';
+      case 2:
+      default:
+        return 'priority-high';
+    }
+  };
+
   return (
     <div className="request-item">
       <div className="request-main-content">
@@ -15,7 +28,9 @@ const RequestItem: FC<RequestItemProps> = ({ request }) => {
       </div>
       <div className="request-meta">
         <div className="request-time">{request.time}</div>
-        <div className="request-priority">Pri. {request.priority}</div>
+        <div className={`request-priority ${getPriorityClass()}`}>
+          Pri. {request.priority}
+        </div>
       </div>
     </div>
   );
