@@ -1,5 +1,6 @@
 export interface Request {
   id: number;
+  originalId: string;
   title: string;
   description: string;
   location: string;
@@ -13,6 +14,7 @@ export interface Request {
 export const fallbackRequests: Request[] = [
   {
     id: 1,
+    originalId: "1",
     title: "Spill near stairs",
     description: "There is a spill near the stairs creating a hazard.",
     location: "LEVEL 1 - S112",
@@ -23,6 +25,7 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 2,
+    originalId: "2",
     title: "Trash overflowing",
     description: "Trash can is overflowing and needs immediate attention.",
     location: "CONC B - CONCESSIONS",
@@ -33,6 +36,7 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 3,
+    originalId: "3",
     title: "Broken Seat",
     description: "Seat is broken and needs repair.",
     location: "LEVEL 2 - S236",
@@ -43,6 +47,7 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 4,
+    originalId: "4",
     title: "Spill near stairs",
     description: "There is a spill near the stairs creating a hazard.",
     location: "LEVEL 1 - S112",
@@ -53,6 +58,7 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 5,
+    originalId: "5",
     title: "Food on floor",
     description: "Food spilled on floor needs to be cleaned up.",
     location: "LEVEL 3 - S311",
@@ -63,6 +69,7 @@ export const fallbackRequests: Request[] = [
   },
   {
     id: 6,
+    originalId: "6",
     title: "Broken Seat",
     description: "Seat is broken and needs repair.",
     location: "LEVEL 2 - S236",
