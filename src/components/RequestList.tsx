@@ -108,7 +108,7 @@ const RequestList: FC = () => {
             </div>
 
             <div className="request-section">
-              <h3 className="section-title">Assigned ({assignedRequests.length})</h3>
+              <h3 className="section-title">In progress ({assignedRequests.length})</h3>
               {assignedRequests.length > 0 ? (
                 <div className="request-list">
                   {assignedRequests.map((request) => (
