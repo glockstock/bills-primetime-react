@@ -53,3 +53,28 @@
   width: 26px;
   height: 26px;
 }
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .header {
+    padding: 0 32px;
+    height: 90px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .header-left, .header-right {
+    width: 120px;
+  }
+  
+  .primetime-logo {
+    max-height: 100px;
+  }
+  
+  .menu-icon, .settings-icon {
+    transition: transform 0.2s ease;
+  }
+  
+  .menu-icon:hover, .settings-icon:hover {
+    transform: scale(1.1);
+  }
+}
