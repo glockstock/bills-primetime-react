@@ -27,6 +27,7 @@ const RequestItem: FC<RequestItemProps> = ({
   const [isSwiping, setIsSwiping] = useState(false);
   const [swipeOffset, setSwipeOffset] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [hasTouchSupport, setHasTouchSupport] = useState(false);
   
   const touchStartX = useRef<number | null>(null);
   const currentOffsetX = useRef<number>(0);
@@ -125,19 +126,28 @@ const RequestItem: FC<RequestItemProps> = ({
     setIsSwiping(false);
   };
 
-  // Detect if user is on mobile
-  const [isMobile, setIsMobile] = useState(false);
-  
+  // Detect if device has touch support (mobile or tablet including iPad)
   useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+    const checkTouchSupport = () => {
+      // Check if the device supports touch events
+      const isTouchDevice = (
+        'ontouchstart' in window || 
+        navigator.maxTouchPoints > 0 ||
+        // @ts-ignore - for compatibility with older browsers
+        navigator.msMaxTouchPoints > 0
+      );
+      
+      // Additionally check if it's an iPad specifically
+      const isIPad = /iPad|iPad Simulator|MacIntel/.test(navigator.platform) && 'ontouchend' in document;
+      
+      setHasTouchSupport(isTouchDevice || isIPad);
     };
     
-    checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
+    checkTouchSupport();
+    window.addEventListener('resize', checkTouchSupport);
     
     return () => {
-      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener('resize', checkTouchSupport);
     };
   }, []);
 
@@ -153,11 +163,11 @@ const RequestItem: FC<RequestItemProps> = ({
         ref={itemRef}
         className={`request-item ${expanded ? 'expanded' : ''}`} 
         onClick={toggleExpanded}
-        onContextMenu={handleRightClick}
-        onTouchStart={isMobile ? handleTouchStart : undefined}
-        onTouchMove={isMobile ? handleTouchMove : undefined}
-        onTouchEnd={isMobile ? handleTouchEnd : undefined}
-        onTouchCancel={isMobile ? handleTouchCancel : undefined}
+        onContextMenu={!hasTouchSupport ? handleRightClick : undefined}
+        onTouchStart={hasTouchSupport ? handleTouchStart : undefined}
+        onTouchMove={hasTouchSupport ? handleTouchMove : undefined}
+        onTouchEnd={hasTouchSupport ? handleTouchEnd : undefined}
+        onTouchCancel={hasTouchSupport ? handleTouchCancel : undefined}
         style={swipeStyle}
       >
         <div className="request-main-content">
@@ -176,8 +186,8 @@ const RequestItem: FC<RequestItemProps> = ({
           </div>
         </div>
         
-        {/* Show delete indicator when swiping on mobile */}
-        {isMobile && swipeOffset > 0 && (
+        {/* Show delete indicator when swiping on touch devices */}
+        {hasTouchSupport && swipeOffset > 0 && (
           <div 
             className="swipe-delete-indicator"
             style={{ opacity: Math.min(swipeOffset / SWIPE_THRESHOLD, 1) }}

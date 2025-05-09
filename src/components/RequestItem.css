@@ -135,8 +135,8 @@
   font-weight: 500;
 }
 
-/* Desktop styles */
-@media (min-width: 769px) {
+/* Styles for non-touch devices (desktop/laptop with mouse) */
+@media (hover: hover) and (pointer: fine) {
   .request-item {
     padding: 16px 20px;
   }
@@ -164,12 +164,45 @@
   }
 }
 
-/* Mobile optimizations */
-@media (max-width: 768px) {
+/* Touch device optimizations (mobile phones, tablets, and iPads) */
+@media (hover: none) or (pointer: coarse) {
   .request-item {
-    /* Better touch handling on mobile */
+    /* Better touch handling on touch devices */
     user-select: none;
     -webkit-user-select: none;
     touch-action: pan-y;
+  }
+  
+  /* Provide visual feedback on tap */
+  .request-item:active {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Make swipe area larger for easier interaction */
+  .swipe-delete-indicator {
+    width: 100px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+/* iPad specific optimizations */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .request-item {
+    padding: 18px 20px;
+  }
+  
+  .request-title {
+    font-size: 20px;
+  }
+  
+  .request-location {
+    font-size: 16px;
+  }
+  
+  /* Larger swipe area for iPads */
+  .swipe-delete-indicator {
+    width: 120px;
+    font-size: 18px;
   }
 } 
