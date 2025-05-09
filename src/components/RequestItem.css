@@ -135,8 +135,12 @@
   font-weight: 500;
 }
 
-/* Add styles for desktop context menu cue */
+/* Desktop styles */
 @media (min-width: 769px) {
+  .request-item {
+    padding: 16px 20px;
+  }
+  
   .request-item:active {
     background-color: #f0f0f0;
   }
@@ -152,6 +156,11 @@
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease;
+  }
+  
+  .request-description {
+    margin-top: 12px;
+    padding-top: 12px;
   }
 }
 
