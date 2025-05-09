@@ -38,11 +38,10 @@ const RequestItem: FC<RequestItemProps> = ({
   // Get priority class based on the priority level
   const getPriorityClass = () => {
     switch (request.priority) {
-      case 0:
-        return 'priority-low';
       case 1:
-        return 'priority-medium';
+        return 'priority-low';
       case 2:
+        return 'priority-medium';
       default:
         return 'priority-high';
     }
