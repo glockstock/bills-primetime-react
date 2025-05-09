@@ -11,6 +11,7 @@ const RequestList: FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isUsingFallback, setIsUsingFallback] = useState(false);
+  const [expandedRequestId, setExpandedRequestId] = useState<number | null>(null);
 
   useEffect(() => {
     const loadRequests = async () => {
@@ -45,6 +46,15 @@ const RequestList: FC = () => {
   const handleRequestDelete = (id: number) => {
     // Update state to remove the deleted request
     setRequests(prevRequests => prevRequests.filter(request => request.id !== id));
+    // If the deleted request was expanded, reset expanded state
+    if (expandedRequestId === id) {
+      setExpandedRequestId(null);
+    }
+  };
+
+  // Handle toggling expanded state
+  const handleToggleExpand = (id: number) => {
+    setExpandedRequestId(prevId => prevId === id ? null : id);
   };
 
   const assignedToMeRequests = requests.filter(request => request.assignedToMe);
@@ -82,6 +92,8 @@ const RequestList: FC = () => {
                       key={request.id} 
                       request={request} 
                       onDelete={handleRequestDelete}
+                      isExpanded={expandedRequestId === request.id}
+                      onToggleExpand={handleToggleExpand}
                     />
                   ))}
                 </div>
@@ -99,6 +111,8 @@ const RequestList: FC = () => {
                       key={request.id} 
                       request={request} 
                       onDelete={handleRequestDelete}
+                      isExpanded={expandedRequestId === request.id}
+                      onToggleExpand={handleToggleExpand}
                     />
                   ))}
                 </div>
@@ -116,6 +130,8 @@ const RequestList: FC = () => {
                       key={request.id} 
                       request={request} 
                       onDelete={handleRequestDelete}
+                      isExpanded={expandedRequestId === request.id}
+                      onToggleExpand={handleToggleExpand}
                     />
                   ))}
                 </div>

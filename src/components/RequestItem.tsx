@@ -8,13 +8,21 @@ import './RequestItem.css';
 interface RequestItemProps {
   request: Request;
   onDelete?: (id: number) => void; // Optional callback for when deletion succeeds
+  isExpanded?: boolean; // Whether this item is expanded, controlled by parent
+  onToggleExpand?: (id: number) => void; // Callback to toggle expansion
 }
 
 // Threshold in pixels to trigger swipe action
 const SWIPE_THRESHOLD = 100;
 
-const RequestItem: FC<RequestItemProps> = ({ request, onDelete }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const RequestItem: FC<RequestItemProps> = ({ 
+  request, 
+  onDelete,
+  isExpanded = false,
+  onToggleExpand
+}) => {
+  // Use internal state only if external control is not provided
+  const [localExpanded, setLocalExpanded] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [isSwiping, setIsSwiping] = useState(false);
   const [swipeOffset, setSwipeOffset] = useState(0);
@@ -23,6 +31,9 @@ const RequestItem: FC<RequestItemProps> = ({ request, onDelete }) => {
   const touchStartX = useRef<number | null>(null);
   const currentOffsetX = useRef<number>(0);
   const itemRef = useRef<HTMLDivElement>(null);
+
+  // Determine if expanded from props or local state
+  const expanded = onToggleExpand ? isExpanded : localExpanded;
 
   // Get priority class based on the priority level
   const getPriorityClass = () => {
@@ -40,7 +51,14 @@ const RequestItem: FC<RequestItemProps> = ({ request, onDelete }) => {
   const toggleExpanded = (e: React.MouseEvent) => {
     // Don't toggle when swiping or right-clicking
     if (isSwiping || e.type === 'contextmenu') return;
-    setIsExpanded(!isExpanded);
+    
+    if (onToggleExpand) {
+      // If parent is controlling expansion, call the toggle callback
+      onToggleExpand(request.id);
+    } else {
+      // Otherwise use local state
+      setLocalExpanded(!localExpanded);
+    }
   };
 
   const handleDelete = async () => {
@@ -134,7 +152,7 @@ const RequestItem: FC<RequestItemProps> = ({ request, onDelete }) => {
     <>
       <div 
         ref={itemRef}
-        className={`request-item ${isExpanded ? 'expanded' : ''}`} 
+        className={`request-item ${expanded ? 'expanded' : ''}`} 
         onClick={toggleExpanded}
         onContextMenu={handleRightClick}
         onTouchStart={isMobile ? handleTouchStart : undefined}
@@ -146,7 +164,7 @@ const RequestItem: FC<RequestItemProps> = ({ request, onDelete }) => {
         <div className="request-main-content">
           <div className="request-title">{request.title}</div>
           <div className="request-location">{request.location}</div>
-          {isExpanded && (
+          {expanded && (
             <div className="request-description">
               {request.description}
             </div>

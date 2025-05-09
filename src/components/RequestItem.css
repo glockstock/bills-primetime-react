@@ -58,7 +58,7 @@
   font-weight: 500;
 }
 
-.priority-low {
+.priority-high {
   background-color: #e8f5e9;
   color: #388e3c;
 }
@@ -68,7 +68,7 @@
   color: #ffa000;
 }
 
-.priority-high {
+.priority-low {
   background-color: #ffebee;
   color: #d32f2f;
 }
